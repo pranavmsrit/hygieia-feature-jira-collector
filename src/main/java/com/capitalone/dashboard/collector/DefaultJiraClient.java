@@ -608,7 +608,9 @@ public class DefaultJiraClient implements JiraClient {
             sprint.setRapidViewId(getString(sprintJson, "originBoardId"));
             return sprint;
         } else {
-            JSONArray sprintCustom = (JSONArray) fields.get(featureSettings.getJiraSprintDataFieldName());
+            //JSONArray sprintCustom = (JSONArray) fields.get(featureSettings.getJiraSprintDataFieldName());
+            JSONArray sprintCustom = new JSONArray();
+			sprintCustom.add(fields.get(featureSettings.getJiraSprintDataFieldName()));
             return SprintFormatter.parseSprint(sprintCustom);
         }
     }
